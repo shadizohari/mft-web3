@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bs/css/bootstrap.css">
+    <title>practice</title>
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        label {
+            color: rgb(90, 90, 90);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <label for="price">Please insert the price of your food:</label>
+            <input type="number" id="price" class="form-control">
+        </div>
+        <div class="row mt-5">
+            <label for="tip" class="w-100">Please insert the percent of tip:</label>
+            <h2>50%</h2>
+            <input type="range" id="tip" class="custom-range" min="0" max="100" step="10" value="50">
+        </div>
+
+        <div class="row mt-5">
+            <label for="number-customers" class="w-100">Please determine the number of customers:</label>
+            <h2>1</h2>
+            <input type="range" id="number-customers" class="custom-range" min="1" max="10" step="1" value="1">
+        </div>
+
+        <div class="row mt-5">
+            <button class="w-100 p-2 btn btn-success ">Tip Calculator</button>
+
+            <h4 class="w-100 p-2 mt-2 bg-primary text-white rounded text-center">your bill is:<span></span></h4>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
