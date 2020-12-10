@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./ICON/icon.css">
+    <link rel="stylesheet" href="./bs/css/bootstrap.css">
+    <title>book list</title>
+    <style>
+        .titre {
+            background-color: #30475e;
+            color: white;
+            margin-bottom: 1.6rem;
+        }
+
+        input {
+            width: 100%;
+            padding: .3rem;
+            margin-top: .8rem;
+
+        }
+
+        label {
+            margin: 0;
+            margin-top: .8rem;
+            font-weight: bold;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        #submit {
+            width: 100%;
+            background-color: #f05454;
+            color: white;
+            border: #f05454;
+        }
+
+        #submit:hover {
+            background-color: #e43c3c;
+        }
+
+        #table-book {
+            width: 100%;
+            margin-top: .8rem;
+        }
+
+        tr:nth-child(2n+1) {
+            background-color: #aaaaaa;
+        }
+
+        tr:nth-child(2n+1):hover {
+            background-color: #9b9898;
+        }
+
+
+        tr:nth-child(2n) {
+            background-color: #e8e8e8;
+        }
+
+        tr:nth-child(2n):hover {
+            background-color: #d1d1d1;
+        }
+
+        tr.header {
+            background-color: #30475e;
+            color: white;
+        }
+
+        tr.header:hover {
+            background-color: #30475e;
+        }
+
+        th,
+        td {
+            border-top: 1px solid white;
+            width: 25%;
+            padding: .4rem;
+        }
+
+        .remove {
+            cursor: pointer;
+        }
+
+        .remove:hover {
+            color: rgb(110, 110, 110);
+        }
+
+        .alert {
+            font-size: .8rem;
+            padding: 1rem;
+            position: absolute;
+            right: 0px;
+            bottom: 50px;
+        }
+
+        .parent-label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-around;
+        }
+
+        .parent-input {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            margin-left: 1rem;
+        }
+
+        .parent-table {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="height: 100vh; position: relative;">
+        <div class="row titre mt-4 p-2 pl-4">
+            <h4>Book List Project</h4>
+        </div>
+        <form action="">
+            <div style="display: flex;">
+                <div class="parent-label">
+                    <label for="title">Title</label>
+                    <label for="author">Author</label>
+                    <label for="ISBN">ISBN</label>
+                </div>
+                <div class="parent-input">
+                    <input type="text" id="title" name="title" placeholder="Enter Book Title">
+                    <input type="text" id="author" name="author" placeholder="Enter Author Book">
+                    <input type="number" id="ISBN" name="ISBN" placeholder="Enter Book`s ISBN">
+                </div>
+            </div>
+            <input type="submit" class="btn font-weight-bold" id="submit" value="Submit">
+        </form>
+        <div class="parent-table" style="overflow-x:auto;">
+            <table id="table-book">
+                <tr class="header">
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Remove</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+
+</html>
