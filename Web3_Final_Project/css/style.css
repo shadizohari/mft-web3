@@ -1,0 +1,483 @@
+/**********************************************
+*** GENERAL
+**********************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* --theme_color: */
+    --hard-dark: #1d3041;
+    --hardest-dark: #15202c;
+    --theme_color: #c0392b;
+    --th0: #c0392b;
+    --th1: #2ecc71;
+    --th2: #3498db;
+    --th3: #9b59b6;
+    --th4: #e74c3c;
+    --th5: #e67e22;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    background-image: linear-gradient(var(--hardest-dark), var(--hard-dark));
+    background-size: cover;
+    background-position: center;
+    font-family: Lato;
+    font-weight: 300;
+    position: relative;
+    height: 100vh;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.blur {
+    filter: blur(5px);
+}
+
+.window .card {
+    width: 400px;
+    max-height: 500px;
+    overflow-y: scroll;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rbga(0, 0, 0, 0.3);
+}
+
+.card h2 {
+    text-align: center;
+    padding: 5px;
+}
+
+table td {
+    font-weight: 600;
+}
+
+.wrapper {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-0-panel, .player-1-panel {
+    flex-basis: 40%;
+    height: 600px;
+    padding: 80px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.player-1-panel {
+    order: 2;
+    ;
+}
+
+.game-controller {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/**********************************************
+*** PLAYERS
+**********************************************/
+
+.player-name {
+    font-size: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.active .player-name {
+    font-weight: 600;
+}
+
+.active .player-name::before {
+    content: "\ea00";
+    margin-right: 10px;
+    font-family: 'icomoon';
+    font-size: 35px;
+    color: var(--theme_color);
+    opacity: .5;
+}
+
+.player-score {
+    text-align: center;
+    font-size: 80px;
+    font-weight: 100;
+    color: var(--theme_color);
+    margin-bottom: 130px;
+    font-weight: bold;
+    position: relative;
+}
+
+.bubble::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    display: block;
+    background-color: var(--theme_color);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: bubble .4s 1 linear;
+    animation-fill-mode: forwards;
+    border-radius: 50%;
+    opacity: .1;
+}
+
+@keyframes bubble {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    99% {
+        transform: translate(-50%, -50%) scale(3.5);
+    }
+    100% {
+        visibility: hidden;
+    }
+}
+
+.active {
+    background-color: #f7f7f7;
+    /* background-image: linear-gradient(110deg , rgba(231, 77, 60,0.2) , transparent); */
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+
+.player-current-box {
+    background-color: var(--theme_color);
+    color: #fff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    padding: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.player-current-label {
+    text-transform: uppercase;
+    margin-top: 7px;
+    font-size: 12px;
+    color: white;
+}
+
+.player-current-score {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+button {
+    color: #555;
+    background: none;
+    border: none;
+    font-family: Lato;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 300;
+    transition: background-color 0.3s, color 0.3s;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 100px;
+}
+
+button::before {
+    font-family: 'icomoon';
+}
+
+button:hover {
+    font-weight: 600;
+}
+
+button:focus {
+    outline: none;
+}
+
+i {
+    color: #fff;
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 32px;
+    line-height: 1;
+    vertical-align: text-top;
+    margin-top: -4px;
+    transition: margin 0.3s;
+}
+
+.btn-new {
+    margin-top: 10px;
+}
+
+.btn-roll {
+    margin-top: auto;
+}
+
+.btn-hold {
+    background-color: var(--theme_color);
+}
+
+.btn-history, .btn-setting {
+    margin-top: 45px;
+    background-color: var(--theme_color);
+    padding: 0;
+    width: 30px;
+    margin-left: 10px;
+}
+
+.btn-history::before {
+    margin-right: 0px;
+}
+
+.btn-setting {
+    margin-top: 10px;
+}
+
+.more-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: flex-start;
+}
+
+.radio-btn-holder, .dice-number-holder {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+
+.dice-number-holder {
+    justify-content: flex-start;
+}
+
+.dice-number-holder .form-group {
+    margin-right: 62px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-radio {
+    visibility: hidden;
+}
+
+.btn-radio+label {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(41, 41, 41);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-radio+label::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--theme_color);
+    display: none;
+}
+
+.form-group>span {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn-radio:checked+label::before {
+    display: block;
+}
+
+.modal-content h6 {
+    color: var(--theme_color);
+    font-weight: bold;
+}
+
+.modal-header h4 {
+    color: var(--theme_color);
+    font-weight: bold;
+}
+
+.setting_header {
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.08);
+    padding-bottom: 5px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--theme_color);
+}
+
+#gameEndPoint {
+    background-color: rgb(41, 41, 41);
+    border: none;
+    color: white;
+}
+
+#gameEndPoint:focus {
+    background-color: rgb(58, 58, 58);
+    box-shadow: none;
+}
+
+.themse-holder {
+    display: flex;
+    padding-top: 5px;
+}
+
+.themes {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-color: white;
+    margin-right: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.themes:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.themes-0 {
+    background-color: #c0392b;
+}
+
+.themes-1 {
+    background-color: #2ecc71;
+}
+
+.themes-2 {
+    background-color: #3498db;
+}
+
+.themes-3 {
+    background-color: #9b59b6;
+}
+
+.themes-4 {
+    background-color: #e74c3c;
+}
+
+.themes-5 {
+    background-color: var(--th5);
+}
+
+.dice {
+    margin-top: auto;
+    width: 100px;
+    box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+}
+
+.winner {
+    background-color: #f7f7f7;
+    animation: shake 1s 1 ease-in-out;
+}
+
+.winner .player-name {
+    font-weight: 600;
+    color: var(--theme_color);
+}
+
+/* add css */
+
+.player-name {
+    font-size: 1.5rem;
+}
+
+.madal-backgroundColor {
+    background-color: #333
+}
+
+.modal-lg {
+    max-width: 350px;
+}
+
+.modal-xlg {
+    max-width: 500px;
+    background-color: #333;
+    padding: 10px;
+}
+
+.modal-dialog {
+    margin-top: 100px;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+    width: 100%;
+}
+
+.table_winner {
+    color: var(--theme_color);
+}
+
+thead tr {
+    color: white;
+    background-color: #333;
+}
+
+tr:nth-child(2n) {
+    background-color: #414141;
+}
+
+tr {
+    background-color: #525252;
+}
+
+.table th, .table tr, .table td {
+    padding: 8px;
+    border: none;
+}
+
+.modal-header {
+    padding: 12px;
+}

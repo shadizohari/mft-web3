@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./bs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Pig Game</title>
+</head>
+
+<body>
+
+    <div class="window">
+        <div class="card">
+            <h2 class="text-white">Game History</h2>
+            <table class="table table-dark text-center table-striped">
+                <thead class="">
+                    <tr>
+                        <th>Player</th>
+                        <th>Score</th>
+                        <th>Player</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot class="bg-success text-white">
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="player-0-panel active">
+            <div class="player-name" id="name-0">Player 0</div>
+            <div class="player-score" id="score-0">0</div>
+            <div class="player-current-box">
+                <div class="player-current-label">Current</div>
+                <div class="player-current-score" id="current-0">0</div>
+            </div>
+        </div>
+
+        <div class="player-1-panel">
+            <div class="player-name" id="name-1">Player 1</div>
+            <div class="player-score" id="score-1">0</div>
+            <div class="player-current-box">
+                <div class="player-current-label">Current</div>
+                <div class="player-current-score" id="current-1">0</div>
+            </div>
+        </div>
+
+        <div class="game-controller">
+            <button class="btn-new icon-plus">New game</button>
+            <!-- <img src="img/dice-1.png" alt="Dice" class="dice"> -->
+            <img src="" alt="" class="dice">
+            <button class="btn-roll icon-repeat">Roll dice</button>
+            <button class="btn-hold icon-check">Hold</button>
+        </div>
+
+
+    </div>
+
+    <div class="more-btns">
+        <button class="btn-history icon-bar-chart-2" data-toggle="modal" data-target="#myModal"></button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header madal-backgroundColor">
+                        <h4>Game History</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <table class="table table-bordered mb-0 text-white text-center font-weight-bold">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Player</th>
+                                    <th scope="col">Score</th>
+                                    <th scope="col">Player</th>
+                                    <th scope="col">Score</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <td>Wins</td>
+                                    <td id=numberWinsPlayer0>0</td>
+                                    <td>Wins</td>
+                                    <td id=numberWinsPlayer1>0</td>
+                                </tr>
+                            </tfoot>
+                            <tbody id=tbody>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-setting icon-settings" data-toggle="modal" data-target="#myModal2"></button>
+        <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog modal-lg modal-xlg">
+                <div class="modal-content madal-backgroundColor">
+                    <h5 class="setting_header py-2 px-2">Game Themes</h5>
+                    <div class="themse-holder pl-3">
+                        <span class="themes themes-0" id="th0"></span>
+                        <span class="themes themes-1" id="th1"></span>
+                        <span class="themes themes-2" id="th2"></span>
+                        <span class="themes themes-3" id="th3"></span>
+                        <span class="themes themes-4" id="th4"></span>
+                        <span class="themes themes-5" id="th5"></span>
+                    </div>
+                    <h6 class="py-2 px-2 pt-4">Enter Game End Point</h6>
+                    <input type="number" class="form-control" id="gameEndPoint" placeholder="at least 20">
+                    <h6 class="py-2 px-2 pt-4">Chnage Turn When dice come on:</h6>
+                    <div class="radio-btn-holder">
+                        <div class="form-group">
+                            <input type="radio" class="btn-radio btn-radio-dice" name="dice" id="firstDice" checked>
+                            <label for="firstDice" class="btn-radion-label"></label>
+                            <span>1</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" class="btn-radio btn-radio-dice" name="dice" id="secondDice">
+                            <label for="secondDice" class="btn-radion-label"></label>
+                            <span>2</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" class="btn-radio btn-radio-dice" name="dice" id="thirdDice">
+                            <label for="thirdDice" class="btn-radion-label"></label>
+                            <span>3</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" class="btn-radio btn-radio-dice" name="dice" id="forthDice">
+                            <label for="forthDice" class="btn-radion-label"></label>
+                            <span>4</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" class="btn-radio btn-radio-dice" name="dice" id="fifthDice">
+                            <label for="fifthDice" class="btn-radion-label"></label>
+                            <span>5</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" class="btn-radio btn-radio-dice" name="dice" id="sixthDice">
+                            <label for="sixthDice" class="btn-radion-label"></label>
+                            <span>6</span>
+                        </div>
+
+                    </div>
+
+                    <h6 class="py-2 px-2 pt-4">Play With</h6>
+                    <div class="dice-number-holder">
+                        <div class="form-group">
+                            <input type="radio" class="btn-radio" name="diceCount" id="firstCount" checked>
+                            <label for="firstCount" class="btn-radion-label"></label>
+                            <span>1 dice</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" class="btn-radio" name="diceCount" id="secondCount">
+                            <label for="secondCount" class="btn-radion-label"></label>
+                            <span>2 dices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./jquery/jquery.js"></script>
+    <script src="./bs/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
